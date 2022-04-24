@@ -18,7 +18,7 @@ int main()
 
     SOCKET client = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-    //nhap địa chỉ IP và port
+ 
     char IP[100];
     int port;
     printf("nhap dia chi IP: ");
@@ -41,7 +41,7 @@ int main()
         printf("Ket noi khong thanh cong - %d\n", ret);
         return 1;
     }
-    //lấy tên máy tính
+
     const char* str = "Ten may tinh la: ";
     send(client, str, strlen(str), 0);
     char name[256];
@@ -49,12 +49,12 @@ int main()
     GetComputerNameA(name, &size);
     send(client, name, size, 0);
 
-    //lấy danh sách ổ đĩa
+
     const char* str2 = "\nDanh sach cac o dia trong may tinh: ";
     send(client, str2, strlen(str2), 0);
-    // Buffer length
+
     DWORD mydrives = 20;
-    // Buffer for drive string storage
+    
     char lpBuffer[18];
     
     DWORD test;
@@ -66,7 +66,7 @@ int main()
         send(client, &buf2, sizeof(buf2), 0);
     }
 
-    //kích thước các ổ đĩa
+    
     LPCWSTR pszDrive = NULL;
     DWORD disksCase, dwSectPerClust, dwBytesPerSect, dwFreeClusters, dwTotalClusters;
 
